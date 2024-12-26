@@ -4,7 +4,7 @@ import managerRouter from "./routes/managers/manager.router.js";
 import challengeRouter from "./routes/challenges/challenge.router.js";
 import helmet from "helmet";
 import { connectToDB } from "./lib/db.js";
-import { UserModel } from "./models/User.js";
+import { UserModel } from "./models/Coder.js";
 import { ChallengeModel } from "./models/Challenge.js";
 
 const app = express();

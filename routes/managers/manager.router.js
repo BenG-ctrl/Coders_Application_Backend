@@ -7,7 +7,7 @@ import {
   updateAboutController,
   updateNameController,
   UpdateUserController,
-} from "../../modules/Users/users.controller.js";
+} from "../../modules/Users/manager.controller.js";
 
 import { validateData } from "../../middleware/zodValidation.middleware.js";
 import {

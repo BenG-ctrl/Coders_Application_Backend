@@ -14,6 +14,10 @@ const ChallengeSchema = new Schema(
       type: String,
       required: true,
     },
+    user: {
+      type: Schema.types.ObjectId,
+      ref: "User",
+    },
   },
   {
     timestamps: true,

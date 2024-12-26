@@ -1,8 +1,12 @@
 import { Schema, model } from "mongoose";
 
-const UserSchema = new Schema(
+const ManagerSchema = new Schema(
   {
     name: {
+      type: String,
+      required: true,
+    },
+    lastname: {
       type: String,
       required: true,
     },
@@ -14,9 +18,13 @@ const UserSchema = new Schema(
       type: String,
       required: true,
     },
-    isActive: {
+    verified: {
       type: Boolean,
       default: false,
+    },
+    role: {
+      type: String,
+      value: "manager",
     },
   },
   {
@@ -24,4 +32,4 @@ const UserSchema = new Schema(
   }
 );
 
-export const UserModel = model("User", UserSchema, "users");
+export const ManagerModel = model("Manager", ManagerSchema, "Manager");
