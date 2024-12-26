@@ -1,3 +1,5 @@
+import { UserModel } from "../../../models/User";
+
 const users = [
   {
     id: 1,
@@ -26,13 +28,11 @@ const users = [
 ];
 
 const createUser = (data) => {
-  let user = { ...data, id: users.length + 1 };
-  users.push(user);
-  return user;
+  return UserModel.create({ data });
 };
 
 const checkIfUserExists = (email) => {
-  return users.find((item) => item.email == email);
+  return UserModel.findOne({ email });
 };
 
 const getHeatMap = (heatmap) => {

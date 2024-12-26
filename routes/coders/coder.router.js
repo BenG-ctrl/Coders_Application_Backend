@@ -1,6 +1,7 @@
 import express from "express";
 import {
   CreateUserController,
+  fetchHeatmapController,
   fetchUserController,
   loginUserController,
   updateAboutController,
@@ -21,5 +22,6 @@ router.post("/signup", validateData(userSingupSchema), CreateUserController);
 router.put("/:id", UpdateUserController);
 router.patch("/:id/about", updateAboutController);
 router.patch("/:id/name", updateNameController);
+router.get("/", fetchHeatmapController);
 
 export default router;
