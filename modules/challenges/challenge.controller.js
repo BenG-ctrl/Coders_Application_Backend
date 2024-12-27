@@ -1,19 +1,28 @@
 import {
   challengeExists,
   challenges,
+  countCompletedChallenges,
   createChallenge,
 } from "./services/challenge.service";
 
-const createChallengeController = (request, response) => {
-  let checkChallengeExists = challengeExists(request.body.description);
+const createChallengeController = async (request, response) => {
+  let checkChallengeExists = await challengeExists(request.body.description);
   if (checkChallengeExists)
     return response.status(400).send("Challenge already exists");
-  let challengetext = createChallenge(...request.body);
-  response.status(201).send(challengetext);
+  let challengetext = await createChallenge(...request.body);
+  response.status(201).send("Challenge successfully created!");
 };
 
-const fetchChallengeController = (request, response) => {
+const fetchAllChallengeController = (request, response) => {
   response.status(200).send(challenges);
+};
+
+const fetchCompletedChallengeController = async (request, response) => {
+  let showChallengesToComplete = countCompletedChallenges();
+  if ((role = coder && coder._id == request.body.coder._id))
+    return await response.status(200).send(showChallengesToComplete);
+  else role = manager;
+  return challenges == manager._id;
 };
 
 const fetchChallengeIdController = (request, response) => {
@@ -24,17 +33,13 @@ const fetchChallengeCategoriesController = (request, response) => {
   response.status(200).send(challenges.category);
 };
 
-const fetchCompletedChallengeController = (request, response) => {
-  response.status(200).send(countCompletedChallenges(count));
-};
-
 const fetchTrendingCategoryController = (request, response) => {
   response.status(200).send(countTrendingCategorys(mostVotesCategory));
 };
 
 export {
   createChallengeController,
-  fetchChallengeController,
+  fetchAllChallengeController,
   fetchChallengeIdController,
   fetchChallengeCategoriesController,
   fetchCompletedChallengeController,

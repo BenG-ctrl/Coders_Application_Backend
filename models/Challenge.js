@@ -1,3 +1,4 @@
+import { boolean } from "joi";
 import { Schema, model } from "mongoose";
 
 const ChallengeSchema = new Schema(
@@ -16,7 +17,15 @@ const ChallengeSchema = new Schema(
     },
     user: {
       type: Schema.types.ObjectId,
-      ref: "User",
+      ref: "Coder Manager",
+    },
+    level: {
+      type: String,
+    },
+    status: {
+      type: String,
+      default: false,
+      ref: "Coder Manager",
     },
   },
   {

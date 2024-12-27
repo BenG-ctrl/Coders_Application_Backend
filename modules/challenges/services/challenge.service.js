@@ -1,3 +1,6 @@
+import { ChallengeModel } from "../../../models/Challenge";
+import { CoderModel } from "../../../models/Coder";
+
 const challenges = [
   {
     title: "factorial",
@@ -18,19 +21,16 @@ const challenges = [
 ];
 
 const challengeExists = (description) => {
-  return users.find((item) => item.description == description);
+  return ChallengeModel.findOne({ description });
 };
 
 const createChallenge = (data) => {
-  let challenge = { ...data };
-  challenges.push(challenge);
-  return challenge;
+  return ChallengeModel.create({ data });
 };
 
 const countCompletedChallenges = () => {
-  let count = 0;
-  if ((challenges === solved) == true) {
-    count = solved.length;
+  if ((Coder.status = true)) {
+    challenges.display((Coder.status = false));
   }
   return count;
 };

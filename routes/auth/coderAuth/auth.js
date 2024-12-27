@@ -34,7 +34,7 @@ app.post("auth/signup", validateData(userSingupSchema), async (req, res) => {
   coder.verified = true;
 });
 
-app.post("auth/login", validateData(userLoginSchema), async (req, res) => {
+app.post("auth/login", verifyToken, async (req, res) => {
   let coder = await CoderModel.findOne({ email: req.body.email });
   if (!coder) return res.status(400).send("User does not exists exists");
   let isPasswordCorrect = await bcrypt.compare(
